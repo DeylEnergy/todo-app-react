@@ -11,6 +11,9 @@ const styles = theme => ({
   },
   table: {
     minWidth: 500
+  },
+  cell: {
+    paddingRight: '4px'
   }
 });
 
@@ -21,14 +24,14 @@ function TableList(props) {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell>Status</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Description</TableCell>
-            <TableCell>Due</TableCell>
-            <TableCell>Importance</TableCell>
-            <TableCell>Tags</TableCell>
-            <TableCell>Actions</TableCell>
+            <TableCell className={classes.cell}>ID</TableCell>
+            <TableCell className={classes.cell}>Status</TableCell>
+            <TableCell className={classes.cell}>Name</TableCell>
+            <TableCell className={classes.cell}>Description</TableCell>
+            <TableCell className={classes.cell}>Due</TableCell>
+            <TableCell className={classes.cell}>Importance</TableCell>
+            <TableCell className={classes.cell}>Tags</TableCell>
+            <TableCell className={classes.cell}>Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableListTasks tasks={tasks} />
