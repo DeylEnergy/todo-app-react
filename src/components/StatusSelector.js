@@ -20,7 +20,11 @@ class StatusSelector extends Component {
   };
 
   handleClose = newStatus => {
-    this.setState({ currentStatus: newStatus, anchorEl: null });
+    // check whether status was picked
+    if (Number(newStatus) || newStatus === 0) {
+      this.setState({ currentStatus: newStatus });
+    }
+    this.setState({ anchorEl: null });
   };
 
   render() {
