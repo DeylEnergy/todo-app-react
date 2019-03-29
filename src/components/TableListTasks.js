@@ -1,23 +1,39 @@
 import React from 'react';
-import { TableBody, TableRow, TableCell, Chip } from '@material-ui/core';
+import { TableBody, TableRow, TableCell, Chip, withStyles } from '@material-ui/core';
 import StatusSelector from './StatusSelector';
 import tags from '../models/tags';
 
+const styles = theme => ({
+  cell: {
+    paddingRight: '4px'
+  }
+});
+
 function TableListTasks(props) {
-  const { tasks } = props;
+  const { tasks, classes } = props;
   return (
     <TableBody>
       {tasks.map(task => (
         <TableRow key={task.id}>
-          <TableCell align="left">{task.id}</TableCell>
-          <TableCell align="left">
+          <TableCell className={classes.cell} align="left">
+            {task.id}
+          </TableCell>
+          <TableCell className={classes.cell} align="left">
             <StatusSelector currentStatus={task.status} />
           </TableCell>
-          <TableCell align="left">{task.name}</TableCell>
-          <TableCell align="left">{task.desc}</TableCell>
-          <TableCell align="left">{task.due}</TableCell>
-          <TableCell align="left">{task.importance}</TableCell>
-          <TableCell align="left">
+          <TableCell className={classes.cell} align="left">
+            {task.name}
+          </TableCell>
+          <TableCell className={classes.cell} align="left">
+            {task.desc}
+          </TableCell>
+          <TableCell className={classes.cell} align="left">
+            {task.due}
+          </TableCell>
+          <TableCell className={classes.cell} align="left">
+            {task.importance}
+          </TableCell>
+          <TableCell className={classes.cell} align="left">
             {task.tags.map(id => (
               <Chip
                 label={tags[id]}
@@ -34,4 +50,4 @@ function TableListTasks(props) {
   );
 }
 
-export default TableListTasks;
+export default withStyles(styles)(TableListTasks);
