@@ -2,6 +2,7 @@ import React from 'react';
 import { TableBody, TableRow, TableCell, Chip, withStyles } from '@material-ui/core';
 import StatusSelector from './StatusSelector';
 import tags from '../models/tags';
+import importance from '../models/importance';
 
 const styles = theme => ({
   cell: {
@@ -31,7 +32,7 @@ function TableListTasks(props) {
             {task.due}
           </TableCell>
           <TableCell className={classes.cell} align="left">
-            {task.importance}
+            {importance[task.importance]}
           </TableCell>
           <TableCell className={classes.cell} align="left">
             {task.tags.map(id => (
