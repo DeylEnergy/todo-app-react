@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  withStyles,
-  Paper,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody
-} from '@material-ui/core';
+import { withStyles, Paper, Table, TableHead, TableRow, TableCell } from '@material-ui/core';
 
 import TableListTasks from './TableListTasks';
 
