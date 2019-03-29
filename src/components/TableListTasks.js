@@ -1,5 +1,6 @@
 import React from 'react';
 import { TableBody, TableRow, TableCell } from '@material-ui/core';
+import StatusSelector from './StatusSelector';
 
 function TableListTasks(props) {
   const { tasks } = props;
@@ -8,7 +9,9 @@ function TableListTasks(props) {
       {tasks.map(task => (
         <TableRow key={task.id}>
           <TableCell align="left">{task.id}</TableCell>
-          <TableCell align="left">{task.status}</TableCell>
+          <TableCell align="left">
+            <StatusSelector currentStatus={task.status} />
+          </TableCell>
           <TableCell align="left">{task.name}</TableCell>
           <TableCell align="left">{task.desc}</TableCell>
           <TableCell align="left">{task.due}</TableCell>
