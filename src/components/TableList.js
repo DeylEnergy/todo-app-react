@@ -10,7 +10,7 @@ const styles = theme => ({
     overflowX: 'auto'
   },
   table: {
-    minWidth: 500
+    minWidth: 1050
   },
   cell: {
     paddingRight: '4px'
