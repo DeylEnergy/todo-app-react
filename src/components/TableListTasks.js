@@ -37,6 +37,7 @@ function TableListTasks(props) {
           <TableCell className={classes.cell} align="left">
             {task.tags.map(id => (
               <Chip
+                key={id}
                 label={tags[id]}
                 style={{
                   marginLeft: '3px'
