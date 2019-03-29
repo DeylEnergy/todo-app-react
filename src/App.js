@@ -3,6 +3,9 @@ import './App.css';
 import { CssBaseline, Grid, withStyles, Typography, Button } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import Header from './components/Header';
+import TableList from './components/TableList';
+
+import tasks from './models/tasks';
 
 const styles = theme => ({
   grid: {
@@ -16,10 +19,12 @@ const styles = theme => ({
     color: grey[800]
   }
 });
-
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      tasks
+    };
   }
   render() {
     const { grid, buttonBlock, button } = this.props.classes;
@@ -34,6 +39,7 @@ class App extends Component {
               Add Task
             </Button>
           </div>
+          <TableList tasks={tasks} />
         </Grid>
       </React.Fragment>
     );
