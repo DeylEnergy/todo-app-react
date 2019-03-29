@@ -9,6 +9,8 @@ import {
   TableBody
 } from '@material-ui/core';
 
+import TableListTasks from './TableListTasks';
+
 const styles = theme => ({
   tableBlock: {
     width: '100%',
@@ -37,20 +39,7 @@ function TableList(props) {
             <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {tasks.map(task => (
-            <TableRow key={task.id}>
-              <TableCell align="left">{task.id}</TableCell>
-              <TableCell align="left">{task.status}</TableCell>
-              <TableCell align="left">{task.name}</TableCell>
-              <TableCell align="left">{task.desc}</TableCell>
-              <TableCell align="left">{task.due}</TableCell>
-              <TableCell align="left">{task.importance}</TableCell>
-              <TableCell align="left">{task.tags}</TableCell>
-              <TableCell align="center">action buttons</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+        <TableListTasks tasks={tasks} />
       </Table>
     </Paper>
   );
