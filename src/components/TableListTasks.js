@@ -1,5 +1,7 @@
 import React from 'react';
-import { TableBody, TableRow, TableCell, Chip, withStyles } from '@material-ui/core';
+import { TableBody, TableRow, TableCell, Chip, withStyles, IconButton } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import StatusSelector from './StatusSelector';
 import tags from '../models/tags';
 import importance from '../models/importance';
@@ -7,6 +9,9 @@ import importance from '../models/importance';
 const styles = theme => ({
   cell: {
     paddingRight: '4px'
+  },
+  icon: {
+    padding: '6px'
   }
 });
 
@@ -45,7 +50,14 @@ function TableListTasks(props) {
               />
             ))}
           </TableCell>
-          <TableCell align="center">action buttons</TableCell>
+          <TableCell align="left">
+            <IconButton aria-label="Edit" className={classes.icon}>
+              <EditIcon fontSize="small" />
+            </IconButton>
+            <IconButton aria-label="Delete" className={classes.icon}>
+              <DeleteIcon fontSize="small" />
+            </IconButton>
+          </TableCell>
         </TableRow>
       ))}
     </TableBody>
