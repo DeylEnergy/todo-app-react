@@ -6,6 +6,7 @@ import Header from './components/Header';
 import TableList from './components/TableList';
 
 import tasks from './models/tasks';
+import ModifyTaskPanel from './components/ModifyTaskPanel';
 
 const styles = theme => ({
   grid: {
@@ -23,15 +24,22 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: tasks
+      todos: tasks,
+      isModifyPanelOpen: false
     };
     this.handleDelete = this.handleDelete.bind(this);
+    this.toggleModifyPanel = this.toggleModifyPanel.bind(this);
   }
 
   handleDelete(id) {
     const { todos } = this.state;
     const updateTodos = todos.filter(x => x.id !== id);
     this.setState({ todos: updateTodos });
+  }
+
+  toggleModifyPanel() {
+    const { isModifyPanelOpen } = this.state;
+    this.setState({ isModifyPanelOpen: !isModifyPanelOpen });
   }
 
   render() {
@@ -43,11 +51,15 @@ class App extends Component {
         <Grid container direction="column" className={grid}>
           <Typography variant="h5">List of Tasks</Typography>
           <div className={buttonBlock}>
-            <Button variant="contained" className={button}>
+            <Button variant="contained" className={button} onClick={this.toggleModifyPanel}>
               Add Task
             </Button>
           </div>
           <TableList handleDelete={this.handleDelete} tasks={this.state.todos} />
+          <ModifyTaskPanel
+            isOpen={this.state.isModifyPanelOpen}
+            toggleModifyPanel={this.toggleModifyPanel}
+          />
         </Grid>
       </React.Fragment>
     );
