@@ -44,6 +44,7 @@ class App extends Component {
 
   render() {
     const { grid, buttonBlock, button } = this.props.classes;
+    const { todos, isModifyPanelOpen } = this.state;
     return (
       <React.Fragment>
         <CssBaseline />
@@ -55,11 +56,8 @@ class App extends Component {
               Add Task
             </Button>
           </div>
-          <TableList handleDelete={this.handleDelete} tasks={this.state.todos} />
-          <ModifyTaskPanel
-            isOpen={this.state.isModifyPanelOpen}
-            toggleModifyPanel={this.toggleModifyPanel}
-          />
+          <TableList handleDelete={this.handleDelete} tasks={todos} />
+          <ModifyTaskPanel isOpen={isModifyPanelOpen} toggleModifyPanel={this.toggleModifyPanel} />
         </Grid>
       </React.Fragment>
     );
