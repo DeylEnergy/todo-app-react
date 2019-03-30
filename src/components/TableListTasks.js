@@ -1,8 +1,9 @@
 import React from 'react';
-import { TableBody, TableRow, TableCell, Chip, withStyles, IconButton } from '@material-ui/core';
+import { TableBody, TableRow, TableCell, Chip, withStyles } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import StatusSelector from './StatusSelector';
+import ActionButton from './ActionButton';
 import tags from '../models/tags';
 import importance from '../models/importance';
 
@@ -16,7 +17,7 @@ const styles = theme => ({
 });
 
 function TableListTasks(props) {
-  const { tasks, classes } = props;
+  const { tasks, classes, handleDelete } = props;
   return (
     <TableBody>
       {tasks.map(task => (
@@ -51,12 +52,17 @@ function TableListTasks(props) {
             ))}
           </TableCell>
           <TableCell align="left">
-            <IconButton aria-label="Edit" className={classes.icon}>
+            <ActionButton label="Edit" className={classes.icon} taskId={task.id}>
               <EditIcon fontSize="small" />
-            </IconButton>
-            <IconButton aria-label="Delete" className={classes.icon}>
+            </ActionButton>
+            <ActionButton
+              label="Delete"
+              className={classes.icon}
+              taskId={task.id}
+              handleClick={handleDelete}
+            >
               <DeleteIcon fontSize="small" />
-            </IconButton>
+            </ActionButton>
           </TableCell>
         </TableRow>
       ))}
