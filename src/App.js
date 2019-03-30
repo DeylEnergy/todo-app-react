@@ -25,6 +25,13 @@ class App extends Component {
     this.state = {
       todos: tasks
     };
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete(id) {
+    const { todos } = this.state;
+    const updateTodos = todos.filter(x => x.id !== id);
+    this.setState({ todos: updateTodos });
   }
 
   render() {
@@ -40,7 +47,7 @@ class App extends Component {
               Add Task
             </Button>
           </div>
-          <TableList tasks={this.state.todos} />
+          <TableList handleDelete={this.handleDelete} tasks={this.state.todos} />
         </Grid>
       </React.Fragment>
     );
