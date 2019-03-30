@@ -23,9 +23,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks
+      todos: tasks
     };
   }
+
   render() {
     const { grid, buttonBlock, button } = this.props.classes;
     return (
@@ -39,7 +40,7 @@ class App extends Component {
               Add Task
             </Button>
           </div>
-          <TableList tasks={tasks} />
+          <TableList tasks={this.state.todos} />
         </Grid>
       </React.Fragment>
     );
