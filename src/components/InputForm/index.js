@@ -76,7 +76,10 @@ class InputForm extends Component {
             onSubmit={handleSubmit}
           />
           <div style={{ marginTop: '10px' }}>
-            <DownshiftMultiple onSet={this.setTags} />
+            <DownshiftMultiple
+              tags={mutation.todo ? mutation.todo.tags : []}
+              onSet={this.setTags}
+            />
           </div>
         </div>
         <LinearProgress

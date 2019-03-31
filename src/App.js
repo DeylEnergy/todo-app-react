@@ -92,8 +92,7 @@ class App extends Component {
       const newTask = {
         ...task,
         id: nextId,
-        importance: parseInt(task.importance, 10),
-        tags: [0] // for later implementation
+        importance: parseInt(task.importance, 10)
       };
 
       this.setState(state => {

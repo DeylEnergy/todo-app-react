@@ -66,10 +66,15 @@ function getSuggestions(value) {
 }
 
 class DownshiftMultiple extends React.Component {
-  state = {
-    inputValue: '',
-    selectedItem: []
-  };
+  constructor(props) {
+    super(props);
+    const { tags, onSet } = this.props;
+    onSet(tags); // update storage
+    this.state = {
+      inputValue: '',
+      selectedItem: tags
+    };
+  }
 
   handleKeyDown = event => {
     const { inputValue, selectedItem } = this.state;
@@ -104,6 +109,8 @@ class DownshiftMultiple extends React.Component {
     this.setState(state => {
       const selectedItem = [...state.selectedItem];
       selectedItem.splice(selectedItem.indexOf(item), 1);
+      const { onSet } = this.props;
+      onSet(selectedItem);
       return { selectedItem };
     });
   };
