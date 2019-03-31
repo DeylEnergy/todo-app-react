@@ -43,7 +43,8 @@ class App extends Component {
       const { todos } = this.state;
       const selectTodo = todos.filter(todo => todo.id === id)[0];
       this.setState({
-        todo: selectTodo
+        todo: selectTodo,
+        isModifyPanelOpen: true
       });
     }
   }
@@ -63,7 +64,8 @@ class App extends Component {
 
       this.setState({
         todos: updateTodos,
-        todo: null
+        todo: null,
+        isModifyPanelOpen: false
       });
     } else {
       const { nextId } = this.state;
@@ -79,7 +81,8 @@ class App extends Component {
         return {
           ...state,
           todos: updateTodos,
-          nextId: state.nextId + 1
+          nextId: state.nextId + 1,
+          isModifyPanelOpen: false
         };
       });
     }
