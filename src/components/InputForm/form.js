@@ -40,7 +40,7 @@ function Form(props) {
       <TextField
         id="name"
         name="name"
-        label="Name"
+        label="Название задачи"
         helperText={touched.name ? errors.name : ''}
         error={touched.name && Boolean(errors.name)}
         value={values.name}
@@ -59,7 +59,7 @@ function Form(props) {
       <TextField
         id="desc"
         name="desc"
-        label="Description"
+        label="Описание задачи"
         multiline
         rowsMax="4"
         value={values.desc}
@@ -78,7 +78,7 @@ function Form(props) {
       <TextField
         id="due"
         name="due"
-        label="Due"
+        label="Дата выполнения"
         type="date"
         value={values.due}
         onChange={handleChange}
@@ -112,14 +112,14 @@ function Form(props) {
       </RadioGroup>
 
       <FormControl className={classes.formControl} fullWidth>
-        <InputLabel htmlFor="status-helper">Status</InputLabel>
+        <InputLabel htmlFor="status-helper">Статус</InputLabel>
         <Select
           value={values.status}
           onChange={handleChange}
           input={<Input name="status" id="status" />}
         >
           <MenuItem value="">
-            <em>None</em>
+            <em>Нет</em>
           </MenuItem>
           {status.map((how, x) => (
             <MenuItem key={how} value={x}>
@@ -127,7 +127,7 @@ function Form(props) {
             </MenuItem>
           ))}
         </Select>
-        <FormHelperText>What is the status?</FormHelperText>
+        <FormHelperText>Статус задания?</FormHelperText>
       </FormControl>
 
       <AppBar
@@ -139,7 +139,7 @@ function Form(props) {
       >
         <Toolbar>
           <Button type="submit" fullWidth variant="contained" className={classes.button}>
-            Save
+            Сохранить
           </Button>
           <Button
             fullWidth
@@ -150,7 +150,7 @@ function Form(props) {
             }}
             className={classes.button}
           >
-            Cancel
+            Отмена
           </Button>
         </Toolbar>
       </AppBar>

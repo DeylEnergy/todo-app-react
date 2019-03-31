@@ -6,7 +6,7 @@ const tasks = [
     desc: 'Lorem ipsum dolor sit amet',
     due: '2019-03-30',
     importance: 0,
-    tags: ['tag1', 'tag3']
+    tags: ['тег1', 'тег3']
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const tasks = [
     desc: 'Lorem ipsum dolor sit amet',
     due: '2019-03-30',
     importance: 2,
-    tags: ['tag2', 'tag3']
+    tags: ['тег2', 'тег3']
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const tasks = [
     desc: 'Lorem ipsum dolor sit amet',
     due: '2019-03-30',
     importance: 0,
-    tags: ['tag1']
+    tags: ['тег1']
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const tasks = [
     desc: 'Lorem ipsum dolor sit amet',
     due: '2019-03-30',
     importance: 2,
-    tags: ['tag3']
+    tags: ['тег3']
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const tasks = [
     desc: 'Lorem ipsum dolor sit amet',
     due: '2019-03-30',
     importance: 0,
-    tags: ['tag1', 'tag3']
+    tags: ['тег1', 'тег3']
   }
 ];
 

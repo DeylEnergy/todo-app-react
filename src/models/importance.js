@@ -1,3 +1,8 @@
-const importance = ['⚠️ Urgent', '👌 Not urgent', '😌 Not so much urgent', '😏 Not so urgent'];
+const importance = [
+  '⚠️ Срочная важная задача',
+  '👌 Срочная неважная задача',
+  '😌 Не срочная важаная задача',
+  '😏 Несрочная неважная задача'
+];
 
 export default importance;

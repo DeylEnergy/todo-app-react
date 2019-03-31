@@ -1,3 +1,3 @@
-const status = ['🔨 Doing', '🗓 Will do', '✅ Done'];
+const status = ['🔨 Выполняется', '🗓 На потом', '✅ Выполнена'];
 
 export default status;
