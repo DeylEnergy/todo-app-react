@@ -52,13 +52,20 @@ function TableListTasks(props) {
             ))}
           </TableCell>
           <TableCell align="left">
-            <ActionButton label="Edit" className={classes.icon} taskId={task.id}>
+            <ActionButton
+              label="Edit"
+              className={classes.icon}
+              taskId={task.id}
+              action="edit"
+              handleClick={handleClick}
+            >
               <EditIcon fontSize="small" />
             </ActionButton>
             <ActionButton
               label="Delete"
               className={classes.icon}
               taskId={task.id}
+              action="delete"
               handleClick={handleClick}
             >
               <DeleteIcon fontSize="small" />
