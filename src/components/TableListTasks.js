@@ -6,6 +6,7 @@ import StatusSelector from './StatusSelector';
 import ActionButton from './ActionButton';
 import tags from '../models/tags';
 import importance from '../models/importance';
+import toHumanDate from '../helpers/time';
 
 const styles = theme => ({
   cell: {
@@ -39,7 +40,7 @@ function TableListTasks(props) {
             {task.desc}
           </TableCell>
           <TableCell className={classes.cell} align="left">
-            {task.due}
+            {toHumanDate(task.due)}
           </TableCell>
           <TableCell className={classes.cell} align="left">
             {importance[task.importance]}
