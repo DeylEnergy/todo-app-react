@@ -128,7 +128,8 @@ class App extends Component {
   }
 
   render() {
-    const { grid, buttonBlock, button } = this.props.classes;
+    const { classes } = this.props;
+    const { grid, buttonBlock, button } = classes;
     const { todos, isModifyPanelOpen, todo, isSnackbarOpen } = this.state;
     return (
       <React.Fragment>
