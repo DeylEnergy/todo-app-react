@@ -60,7 +60,12 @@ class App extends Component {
       // if we want to edit todo
       const { id } = todo;
       const { todos } = this.state;
-      const updateTodos = todos.map(duty => (duty.id === id ? task : duty));
+      const updateTodos = todos.map(duty => {
+        if (duty.id === id) {
+          return { ...task, importance: parseInt(task.importance, 10) };
+        }
+        return duty;
+      });
 
       this.setState({
         todos: updateTodos,
