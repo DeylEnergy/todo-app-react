@@ -54,14 +54,22 @@ class StatusSelector extends Component {
           }}
         >
           {status.map((option, id) => (
-            <MenuItem key={option} onClick={this.handleClose.bind(null, id)}>
+            <DropItem key={option} id={id} handleClose={this.handleClose}>
               {option}
-            </MenuItem>
+            </DropItem>
           ))}
         </Menu>
       </span>
     );
   }
+}
+
+function DropItem(props) {
+  const { id, children, handleClose } = props;
+  const onClick = () => {
+    handleClose(id);
+  };
+  return <MenuItem onClick={onClick}>{children}</MenuItem>;
 }
 
 export default StatusSelector;
