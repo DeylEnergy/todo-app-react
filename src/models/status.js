@@ -1,3 +1,3 @@
-const status = ['Doing', 'Will do', 'Done'];
+const status = ['🔨 Doing', '🗓 Will do', '✅ Done'];
 
 export default status;
