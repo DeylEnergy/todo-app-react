@@ -137,7 +137,14 @@ function Form(props) {
           <Button type="submit" fullWidth variant="contained">
             Save
           </Button>
-          <Button fullWidth variant="contained" onClick={toggleModifyPanel}>
+          <Button
+            fullWidth
+            variant="contained"
+            onClick={() => {
+              const { name, desc, due } = values;
+              toggleModifyPanel([name, desc, due, values.importance]);
+            }}
+          >
             Cancel
           </Button>
         </Toolbar>
