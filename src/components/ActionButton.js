@@ -2,10 +2,10 @@ import React from 'react';
 import { IconButton } from '@material-ui/core';
 
 function ActionButton(props) {
-  const { label, className, children, handleClick, taskId } = props;
+  const { label, className, children, handleClick, taskId, action } = props;
 
   const onClick = () => {
-    handleClick(taskId);
+    handleClick(taskId, action);
   };
 
   return (
