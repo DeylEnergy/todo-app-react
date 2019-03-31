@@ -2,10 +2,17 @@ import React from 'react';
 import { IconButton } from '@material-ui/core';
 
 function ActionButton(props) {
-  const { label, className, children, handleClick, taskId, action } = props;
+  const { label, className, children, handleClick, taskId, action, fireDelete } = props;
 
   const onClick = () => {
-    handleClick(taskId, action);
+    if (action === 'delete') {
+      fireDelete(taskId);
+      setTimeout(() => {
+        handleClick(taskId, action);
+      }, 2000);
+    } else {
+      handleClick(taskId, action);
+    }
   };
 
   return (
