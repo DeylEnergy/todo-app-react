@@ -25,10 +25,13 @@ class App extends Component {
     super(props);
     this.state = {
       todos: tasks,
+      nextId: tasks.length + 1,
+      todo: null, // nothing to edit
       isModifyPanelOpen: false
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleModifyPanel = this.toggleModifyPanel.bind(this);
+    this.taskMutation = this.taskMutation.bind(this);
   }
 
   handleDelete(id) {
@@ -42,9 +45,27 @@ class App extends Component {
     this.setState({ isModifyPanelOpen: !isModifyPanelOpen });
   }
 
+  taskMutation(task) {
+    const { nextId } = this.state;
+    const newTask = {
+      ...task,
+      id: nextId,
+      importance: parseInt(task.importance, 10),
+      tags: [0] // for later implementation
+    };
+
+    this.setState(state => {
+      const updateTodos = [...state.todos, newTask];
+      return {
+        ...state,
+        todos: updateTodos
+      };
+    });
+  }
+
   render() {
     const { grid, buttonBlock, button } = this.props.classes;
-    const { todos, isModifyPanelOpen } = this.state;
+    const { todos, isModifyPanelOpen, todo } = this.state;
     return (
       <React.Fragment>
         <CssBaseline />
@@ -57,7 +78,11 @@ class App extends Component {
             </Button>
           </div>
           <TableList handleDelete={this.handleDelete} tasks={todos} />
-          <ModifyTaskPanel isOpen={isModifyPanelOpen} toggleModifyPanel={this.toggleModifyPanel} />
+          <ModifyTaskPanel
+            isOpen={isModifyPanelOpen}
+            toggleModifyPanel={this.toggleModifyPanel}
+            mutation={{ todo, onSubmit: this.taskMutation }}
+          />
         </Grid>
       </React.Fragment>
     );
