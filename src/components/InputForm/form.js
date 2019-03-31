@@ -25,6 +25,10 @@ const styles = theme => ({
   field: {
     marginTop: '10px',
     marginBottom: '10px'
+  },
+  button: {
+    marginLeft: '15px',
+    marginRight: '15px'
   }
 });
 
@@ -134,7 +138,7 @@ function Form(props) {
         }}
       >
         <Toolbar>
-          <Button type="submit" fullWidth variant="contained">
+          <Button type="submit" fullWidth variant="contained" className={classes.button}>
             Save
           </Button>
           <Button
@@ -144,6 +148,7 @@ function Form(props) {
               const { name, desc, due } = values;
               toggleModifyPanel([name, desc, due, values.importance]);
             }}
+            className={classes.button}
           >
             Cancel
           </Button>
