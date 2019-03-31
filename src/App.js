@@ -54,22 +54,35 @@ class App extends Component {
   }
 
   taskMutation(task) {
-    const { nextId } = this.state;
-    const newTask = {
-      ...task,
-      id: nextId,
-      importance: parseInt(task.importance, 10),
-      tags: [0] // for later implementation
-    };
+    const { todo } = this.state;
+    if (todo) {
+      // if we want to edit todo
+      const { id } = todo;
+      const { todos } = this.state;
+      const updateTodos = todos.map(duty => (duty.id === id ? task : duty));
 
-    this.setState(state => {
-      const updateTodos = [...state.todos, newTask];
-      return {
-        ...state,
+      this.setState({
         todos: updateTodos,
-        nextId: state.nextId + 1
+        todo: null
+      });
+    } else {
+      const { nextId } = this.state;
+      const newTask = {
+        ...task,
+        id: nextId,
+        importance: parseInt(task.importance, 10),
+        tags: [0] // for later implementation
       };
-    });
+
+      this.setState(state => {
+        const updateTodos = [...state.todos, newTask];
+        return {
+          ...state,
+          todos: updateTodos,
+          nextId: state.nextId + 1
+        };
+      });
+    }
   }
 
   render() {
