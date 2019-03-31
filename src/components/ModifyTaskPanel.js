@@ -26,7 +26,7 @@ function ModifyTaskPanel(props) {
           <CssBaseline />
           <AppBar position="fixed" className={classes.appBarTop}>
             <Toolbar className={classes.toolbar}>
-              <div>Add Task</div>
+              <div>{mutation.todo ? 'Edit Task' : 'Add Task'}</div>
             </Toolbar>
           </AppBar>
           <div className={classes.content}>
