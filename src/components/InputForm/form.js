@@ -29,7 +29,7 @@ const styles = theme => ({
 });
 
 function Form(props) {
-  const { classes, values, handleChange, handleSubmit, touched, errors } = props;
+  const { classes, values, handleChange, handleSubmit, touched, errors, toggleModifyPanel } = props;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -137,7 +137,7 @@ function Form(props) {
           <Button type="submit" fullWidth variant="contained">
             Save
           </Button>
-          <Button fullWidth variant="contained">
+          <Button fullWidth variant="contained" onClick={toggleModifyPanel}>
             Cancel
           </Button>
         </Toolbar>

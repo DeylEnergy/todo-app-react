@@ -30,7 +30,7 @@ function ModifyTaskPanel(props) {
             </Toolbar>
           </AppBar>
           <div className={classes.content}>
-            <InputForm mutation={mutation} />
+            <InputForm mutation={mutation} toggleModifyPanel={toggleModifyPanel} />
           </div>
         </React.Fragment>
       </Drawer>

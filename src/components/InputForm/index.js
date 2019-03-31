@@ -30,7 +30,7 @@ class InputForm extends Component {
 
   render() {
     const classes = this.props;
-    const { mutation } = this.props;
+    const { mutation, toggleModifyPanel } = this.props;
     // 'mutation' prop comes from App.js
     let values;
     if (mutation.todo) {
@@ -48,7 +48,7 @@ class InputForm extends Component {
         <div className={classes.container}>
           <Paper elevation={1} className={classes.paper} />
           <Formik
-            render={props => <Form {...props} />}
+            render={props => <Form {...props} toggleModifyPanel={toggleModifyPanel} />}
             validationSchema={validationSchema}
             initialValues={values}
             onSubmit={handleSubmit}
