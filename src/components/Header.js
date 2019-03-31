@@ -1,16 +1,16 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, withStyles } from '@material-ui/core';
-import { green } from '@material-ui/core/colors';
+import { blue } from '@material-ui/core/colors';
 
 // Customize css
 const styles = theme => ({
   appBar: {
-    backgroundColor: green[500]
+    backgroundColor: blue[500]
   },
   typography: {
     fontFamily: 'Carter One, cursive',
     fontSize: '23px',
-    color: green[50],
+    color: blue[50],
     margin: '0 auto',
     textAlign: 'center'
   }
