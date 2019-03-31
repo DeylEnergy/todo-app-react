@@ -34,10 +34,18 @@ class App extends Component {
     this.taskMutation = this.taskMutation.bind(this);
   }
 
-  handleMutateBtnClick(id) {
-    const { todos } = this.state;
-    const updateTodos = todos.filter(x => x.id !== id);
-    this.setState({ todos: updateTodos });
+  handleMutateBtnClick(id, action) {
+    if (action === 'delete') {
+      const { todos } = this.state;
+      const updateTodos = todos.filter(x => x.id !== id);
+      this.setState({ todos: updateTodos });
+    } else if (action === 'edit') {
+      const { todos } = this.state;
+      const selectTodo = todos.filter(todo => todo.id === id)[0];
+      this.setState({
+        todo: selectTodo
+      });
+    }
   }
 
   toggleModifyPanel() {
