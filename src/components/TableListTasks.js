@@ -17,7 +17,7 @@ const styles = theme => ({
 });
 
 function TableListTasks(props) {
-  const { tasks, classes, handleClick } = props;
+  const { tasks, classes, handleClick, handleStatusChange } = props;
   return (
     <TableBody>
       {tasks.map(task => (
@@ -26,7 +26,11 @@ function TableListTasks(props) {
             {task.id}
           </TableCell>
           <TableCell className={classes.cell} align="left">
-            <StatusSelector currentStatus={task.status} />
+            <StatusSelector
+              currentStatus={task.status}
+              taskId={task.id}
+              handleStatusChange={handleStatusChange}
+            />
           </TableCell>
           <TableCell className={classes.cell} align="left">
             {task.name}

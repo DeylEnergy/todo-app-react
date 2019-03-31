@@ -32,6 +32,7 @@ class App extends Component {
     this.handleMutateBtnClick = this.handleMutateBtnClick.bind(this);
     this.toggleModifyPanel = this.toggleModifyPanel.bind(this);
     this.taskMutation = this.taskMutation.bind(this);
+    this.handleStatus = this.handleStatus.bind(this);
   }
 
   handleMutateBtnClick(id, action) {
@@ -93,6 +94,19 @@ class App extends Component {
     }
   }
 
+  handleStatus(todoId, statusId) {
+    const { todos } = this.state;
+    const updateTodos = todos.map(todo => {
+      if (todo.id === todoId) {
+        return { ...todo, status: statusId };
+      }
+      return todo;
+    });
+    this.setState({
+      todos: updateTodos
+    });
+  }
+
   render() {
     const { grid, buttonBlock, button } = this.props.classes;
     const { todos, isModifyPanelOpen, todo } = this.state;
@@ -107,7 +121,11 @@ class App extends Component {
               Add Task
             </Button>
           </div>
-          <TableList handleClick={this.handleMutateBtnClick} tasks={todos} />
+          <TableList
+            handleClick={this.handleMutateBtnClick}
+            handleStatusChange={this.handleStatus}
+            tasks={todos}
+          />
           <ModifyTaskPanel
             isOpen={isModifyPanelOpen}
             toggleModifyPanel={this.toggleModifyPanel}

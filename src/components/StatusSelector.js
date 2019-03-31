@@ -10,8 +10,7 @@ class StatusSelector extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      anchorEl: null,
-      currentStatus: props.currentStatus
+      anchorEl: null
     };
   }
 
@@ -19,16 +18,18 @@ class StatusSelector extends Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = newStatus => {
+  handleClose = (taskId, newStatus) => {
     // check whether status was picked
     if (Number(newStatus) || newStatus === 0) {
-      this.setState({ currentStatus: newStatus });
+      const { handleStatusChange } = this.props;
+      handleStatusChange(taskId, newStatus);
     }
     this.setState({ anchorEl: null });
   };
 
   render() {
-    const { anchorEl, currentStatus } = this.state;
+    const { anchorEl } = this.state;
+    const { taskId, currentStatus } = this.props;
     const open = Boolean(anchorEl);
     return (
       <span>
@@ -54,7 +55,7 @@ class StatusSelector extends Component {
           }}
         >
           {status.map((option, id) => (
-            <DropItem key={option} id={id} handleClose={this.handleClose}>
+            <DropItem key={option} taskId={taskId} id={id} handleClose={this.handleClose}>
               {option}
             </DropItem>
           ))}
@@ -65,9 +66,9 @@ class StatusSelector extends Component {
 }
 
 function DropItem(props) {
-  const { id, children, handleClose } = props;
+  const { taskId, id, children, handleClose } = props;
   const onClick = () => {
-    handleClose(id);
+    handleClose(taskId, id);
   };
   return <MenuItem onClick={onClick}>{children}</MenuItem>;
 }
