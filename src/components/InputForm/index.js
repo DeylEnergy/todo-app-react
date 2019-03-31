@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
+import { LinearProgress } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Paper from '@material-ui/core/Paper';
 import { object as yupObject, string as yupString } from 'yup';
@@ -25,13 +26,21 @@ const validationSchema = yupObject({
 class InputForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      progress: false
+    };
+  }
+
+  toggleProgressbar() {
+    const { progress } = this.state;
+    this.setState({ progress: !progress });
   }
 
   render() {
     const classes = this.props;
     const { mutation, toggleModifyPanel } = this.props;
     // 'mutation' prop comes from App.js
+    const { progress } = this.state;
     let values;
     if (mutation.todo) {
       const { todo } = mutation;
@@ -41,7 +50,10 @@ class InputForm extends Component {
     }
 
     const handleSubmit = vals => {
-      mutation.onSubmit(vals); // it invokes descedent's method
+      this.toggleProgressbar();
+      setTimeout(() => {
+        mutation.onSubmit(vals); // it invokes descedent's method
+      }, 2000);
     };
     return (
       <React.Fragment>
@@ -54,6 +66,12 @@ class InputForm extends Component {
             onSubmit={handleSubmit}
           />
         </div>
+        <LinearProgress
+          style={{
+            marginTop: '15px',
+            display: progress ? 'block' : 'none'
+          }}
+        />
       </React.Fragment>
     );
   }
