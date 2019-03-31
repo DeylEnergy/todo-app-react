@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { CssBaseline, Grid, withStyles, Typography, Button } from '@material-ui/core';
+import DoneAll from '@material-ui/icons/DoneAll';
 import { grey } from '@material-ui/core/colors';
 import Header from './components/Header';
 import TableList from './components/TableList';
@@ -13,12 +14,23 @@ const styles = theme => ({
   grid: {
     padding: '10px 20px 0 20px'
   },
+  typography: {
+    paddingTop: '20px',
+    color: '#888'
+  },
   buttonBlock: {
     textAlign: 'right'
   },
   button: {
     backgroundColor: grey[100],
     color: grey[800]
+  },
+  footer: {
+    display: 'flex',
+    justifyContent: 'center',
+    padding: '20px',
+    color: '#888',
+    fontSize: '15px'
   }
 });
 class App extends Component {
@@ -129,14 +141,26 @@ class App extends Component {
 
   render() {
     const { classes } = this.props;
-    const { grid, buttonBlock, button } = classes;
+    const { grid, buttonBlock, button, typography, footer } = classes;
     const { todos, isModifyPanelOpen, todo, isSnackbarOpen } = this.state;
     return (
       <React.Fragment>
         <CssBaseline />
         <Header />
         <Grid container direction="column" className={grid}>
-          <Typography variant="h5">List of Tasks</Typography>
+          <Typography variant="h5" className={typography}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div
+                style={{
+                  padding: '2px 5px 0 0',
+                  color: '#bbdefb'
+                }}
+              >
+                <DoneAll />
+              </div>
+              <div>List of Tasks</div>
+            </div>
+          </Typography>
           <div className={buttonBlock}>
             <Button variant="contained" className={button} onClick={this.toggleModifyPanel}>
               Add Task
@@ -152,6 +176,19 @@ class App extends Component {
             toggleModifyPanel={this.toggleModifyPanel}
             mutation={{ todo, onSubmit: this.taskMutation }}
           />
+          <div className={footer}>
+            Made by
+            <a
+              href="https://deylenergy.github.io/portfolio"
+              style={{
+                color: '#2196f3',
+                textDecoration: 'none',
+                paddingLeft: '5px'
+              }}
+            >
+              Deyl Energy
+            </a>
+          </div>
         </Grid>
         <CustomSnackbar
           open={isSnackbarOpen}
