@@ -32,7 +32,14 @@ class InputForm extends Component {
     const classes = this.props;
     const { mutation } = this.props;
     // 'mutation' prop comes from App.js
-    const values = { name: '', desc: '', due: '', status: 0, importance: '' };
+    let values;
+    if (mutation.todo) {
+      const { todo } = mutation;
+      values = { ...todo, importance: `${todo.importance}` };
+    } else {
+      values = { name: '', desc: '', due: '', status: 0, importance: '' };
+    }
+
     const handleSubmit = vals => {
       mutation.onSubmit(vals); // it invokes descedent's method
     };
