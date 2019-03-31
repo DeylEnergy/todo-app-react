@@ -5,6 +5,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Paper from '@material-ui/core/Paper';
 import { object as yupObject, string as yupString } from 'yup';
 import Form from './form';
+import DownshiftMultiple from '../DownshiftMultiple';
 
 const styles = theme => ({
   paper: {
@@ -23,12 +24,21 @@ const validationSchema = yupObject({
   name: yupString('Enter a name').required('Name is required')
 });
 
+// accumulator of all tags
+const allTags = {
+  collection: [],
+  put(update) {
+    this.collection = update;
+  }
+};
+
 class InputForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       progress: false
     };
+    this.setTags = allTags.put.bind(allTags);
   }
 
   toggleProgressbar() {
@@ -52,7 +62,7 @@ class InputForm extends Component {
     const handleSubmit = vals => {
       this.toggleProgressbar();
       setTimeout(() => {
-        mutation.onSubmit(vals); // it invokes descedent's method
+        mutation.onSubmit({ ...vals, tags: allTags.collection }); // it invokes descedent's method
       }, 2000);
     };
     return (
@@ -65,6 +75,9 @@ class InputForm extends Component {
             initialValues={values}
             onSubmit={handleSubmit}
           />
+          <div style={{ marginTop: '10px' }}>
+            <DownshiftMultiple onSet={this.setTags} />
+          </div>
         </div>
         <LinearProgress
           style={{
