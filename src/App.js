@@ -52,7 +52,7 @@ class App extends Component {
 
   toggleModifyPanel() {
     const { isModifyPanelOpen } = this.state;
-    this.setState({ isModifyPanelOpen: !isModifyPanelOpen });
+    this.setState({ isModifyPanelOpen: !isModifyPanelOpen, todo: null });
   }
 
   taskMutation(task) {
