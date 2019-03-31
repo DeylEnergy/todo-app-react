@@ -11,7 +11,6 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import StatusSelector from './StatusSelector';
 import ActionButton from './ActionButton';
-import tags from '../models/tags';
 import importance from '../models/importance';
 import toHumanDate from '../helpers/time';
 
@@ -82,10 +81,10 @@ class TableListTasks extends Component {
               {importance[task.importance]}
             </TableCell>
             <TableCell className={classes.cell} align="left">
-              {task.tags.map(id => (
+              {task.tags.map(tag => (
                 <Chip
-                  key={id}
-                  label={tags[id]}
+                  key={tag}
+                  label={tag}
                   style={{
                     marginLeft: '3px'
                   }}
