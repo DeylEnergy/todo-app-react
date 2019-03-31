@@ -7,6 +7,7 @@ import TableList from './components/TableList';
 
 import tasks from './models/tasks';
 import ModifyTaskPanel from './components/ModifyTaskPanel';
+import CustomSnackbar from './components/CustomSnackbar';
 
 const styles = theme => ({
   grid: {
@@ -27,12 +28,14 @@ class App extends Component {
       todos: tasks,
       nextId: tasks.length + 1,
       todo: null, // nothing to edit
-      isModifyPanelOpen: false
+      isModifyPanelOpen: false,
+      isSnackbarOpen: false
     };
     this.handleMutateBtnClick = this.handleMutateBtnClick.bind(this);
     this.toggleModifyPanel = this.toggleModifyPanel.bind(this);
     this.taskMutation = this.taskMutation.bind(this);
     this.handleStatus = this.handleStatus.bind(this);
+    this.handleSnackbarClose = this.handleSnackbarClose.bind(this);
   }
 
   handleMutateBtnClick(id, action) {
@@ -50,7 +53,18 @@ class App extends Component {
     }
   }
 
-  toggleModifyPanel() {
+  toggleModifyPanel(fields) {
+    if (Array.isArray(fields)) {
+      const ifFieldsWereModified = fields.filter(x => x.length > 0);
+      if (ifFieldsWereModified.length) {
+        // open snackbar
+        setTimeout(() => {
+          this.setState({
+            isSnackbarOpen: true
+          });
+        }, 300);
+      }
+    }
     const { isModifyPanelOpen } = this.state;
     this.setState({ isModifyPanelOpen: !isModifyPanelOpen, todo: null });
   }
@@ -107,9 +121,16 @@ class App extends Component {
     });
   }
 
+  handleSnackbarClose(event, reason) {
+    if (reason === 'clickaway') return;
+    this.setState({
+      isSnackbarOpen: false
+    });
+  }
+
   render() {
     const { grid, buttonBlock, button } = this.props.classes;
-    const { todos, isModifyPanelOpen, todo } = this.state;
+    const { todos, isModifyPanelOpen, todo, isSnackbarOpen } = this.state;
     return (
       <React.Fragment>
         <CssBaseline />
@@ -132,6 +153,11 @@ class App extends Component {
             mutation={{ todo, onSubmit: this.taskMutation }}
           />
         </Grid>
+        <CustomSnackbar
+          open={isSnackbarOpen}
+          handleClose={this.handleSnackbarClose}
+          message="You closed the drawer without save"
+        />
       </React.Fragment>
     );
   }
