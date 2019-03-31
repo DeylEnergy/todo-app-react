@@ -66,7 +66,8 @@ class App extends Component {
       const updateTodos = [...state.todos, newTask];
       return {
         ...state,
-        todos: updateTodos
+        todos: updateTodos,
+        nextId: state.nextId + 1
       };
     });
   }
