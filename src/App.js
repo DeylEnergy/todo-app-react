@@ -29,12 +29,12 @@ class App extends Component {
       todo: null, // nothing to edit
       isModifyPanelOpen: false
     };
-    this.handleDelete = this.handleDelete.bind(this);
+    this.handleMutateBtnClick = this.handleMutateBtnClick.bind(this);
     this.toggleModifyPanel = this.toggleModifyPanel.bind(this);
     this.taskMutation = this.taskMutation.bind(this);
   }
 
-  handleDelete(id) {
+  handleMutateBtnClick(id) {
     const { todos } = this.state;
     const updateTodos = todos.filter(x => x.id !== id);
     this.setState({ todos: updateTodos });
@@ -77,7 +77,7 @@ class App extends Component {
               Add Task
             </Button>
           </div>
-          <TableList handleDelete={this.handleDelete} tasks={todos} />
+          <TableList handleClick={this.handleMutateBtnClick} tasks={todos} />
           <ModifyTaskPanel
             isOpen={isModifyPanelOpen}
             toggleModifyPanel={this.toggleModifyPanel}

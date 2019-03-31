@@ -18,7 +18,7 @@ const styles = theme => ({
 });
 
 function TableList(props) {
-  const { classes, tasks, handleDelete } = props;
+  const { classes, tasks, handleClick } = props;
   return (
     <Paper className={classes.tableBlock}>
       <Table className={classes.table}>
@@ -34,7 +34,7 @@ function TableList(props) {
             <TableCell className={classes.cell}>Actions</TableCell>
           </TableRow>
         </TableHead>
-        <TableListTasks handleDelete={handleDelete} tasks={tasks} />
+        <TableListTasks handleClick={handleClick} tasks={tasks} />
       </Table>
     </Paper>
   );

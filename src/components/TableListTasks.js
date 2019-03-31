@@ -17,7 +17,7 @@ const styles = theme => ({
 });
 
 function TableListTasks(props) {
-  const { tasks, classes, handleDelete } = props;
+  const { tasks, classes, handleClick } = props;
   return (
     <TableBody>
       {tasks.map(task => (
@@ -59,7 +59,7 @@ function TableListTasks(props) {
               label="Delete"
               className={classes.icon}
               taskId={task.id}
-              handleClick={handleDelete}
+              handleClick={handleClick}
             >
               <DeleteIcon fontSize="small" />
             </ActionButton>
