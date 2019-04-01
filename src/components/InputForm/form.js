@@ -28,7 +28,8 @@ const styles = theme => ({
     marginBottom: '10px'
   },
   button: {
-    width: '45%'
+    width: '45%',
+    height: '45px'
   },
   stripe: {
     display: 'flex',
@@ -190,13 +191,15 @@ function Form(props) {
               }}
             />
             {/* give some space beneath */}
-            <div style={{ height: '70px' }} />
+            <div style={{ height: '50px' }} />
           </div>
         </div>
         <div
           className={classes.stripe}
           style={{
-            background: '#2196f3'
+            background: '#2196f3',
+            alignItems: 'center',
+            height: '70px'
           }}
         >
           <Button type="submit" variant="contained" className={classes.button}>
