@@ -193,7 +193,7 @@ class App extends Component {
         <CustomSnackbar
           open={isSnackbarOpen}
           handleClose={this.handleSnackbarClose}
-          message="You closed the drawer without save"
+          message="Панель была закрыта без сохранения"
         />
       </React.Fragment>
     );
