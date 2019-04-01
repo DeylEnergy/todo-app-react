@@ -19,7 +19,7 @@ const styles = theme => ({
 });
 
 const validationSchema = yupObject({
-  name: yupString('Enter a name').required('Name is required')
+  name: yupString('Введите название').required('Название обязательно')
 });
 
 // accumulator of all tags
