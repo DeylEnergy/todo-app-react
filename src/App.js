@@ -158,12 +158,12 @@ class App extends Component {
               >
                 <DoneAll />
               </div>
-              <div>List of Tasks</div>
+              <div>Список Задач</div>
             </div>
           </Typography>
           <div className={buttonBlock}>
             <Button variant="contained" className={button} onClick={this.toggleModifyPanel}>
-              Add Task
+              Добавить задачу
             </Button>
           </div>
           <TableList

@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import Chip from '@material-ui/core/Chip';
 
-const suggestions = [{ label: 'tag1' }, { label: 'tag2' }, { label: 'tag3' }, { label: 'tag4' }];
+const suggestions = [{ label: 'тег1' }, { label: 'тег2' }, { label: 'тег3' }, { label: 'тег4' }];
 
 function renderInput(inputProps) {
   const { InputProps, classes, ref, ...other } = inputProps;
@@ -150,9 +150,9 @@ class DownshiftMultiple extends React.Component {
                 )),
                 onChange: this.handleInputChange,
                 onKeyDown: this.handleKeyDown,
-                placeholder: 'Select multiple tags'
+                placeholder: 'Выберите несколько тегов'
               }),
-              label: 'Tags'
+              label: 'Теги'
             })}
             {isOpen ? (
               <Paper className={classes.paper} square>

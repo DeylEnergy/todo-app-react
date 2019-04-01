@@ -1,11 +1,9 @@
 import React from 'react';
-import { Drawer, CssBaseline, AppBar, Toolbar, withStyles } from '@material-ui/core';
+import { Drawer, CssBaseline, withStyles } from '@material-ui/core';
 import InputForm from './InputForm';
 
 const styles = theme => ({
-  content: {
-    padding: '80px 10px 0 10px'
-  },
+  content: {},
   appBarTop: {
     top: 0,
     bottom: 'auto'
@@ -24,11 +22,11 @@ function ModifyTaskPanel(props) {
       <Drawer open={isOpen} onClose={toggleModifyPanel}>
         <React.Fragment>
           <CssBaseline />
-          <AppBar position="fixed" className={classes.appBarTop}>
+          {/* <AppBar position="fixed" className={classes.appBarTop}>
             <Toolbar className={classes.toolbar}>
-              <div>{mutation.todo ? 'Edit Task' : 'Add Task'}</div>
+              <div>{mutation.todo ? 'Редактировать задачу' : 'Добавить задачу'}</div>
             </Toolbar>
-          </AppBar>
+          </AppBar> */}
           <div className={classes.content}>
             <InputForm mutation={mutation} toggleModifyPanel={toggleModifyPanel} />
           </div>

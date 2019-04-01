@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
-import { LinearProgress } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Paper from '@material-ui/core/Paper';
 import { object as yupObject, string as yupString } from 'yup';
 import Form from './form';
-import DownshiftMultiple from '../DownshiftMultiple';
 
 const styles = theme => ({
   paper: {
@@ -70,24 +68,20 @@ class InputForm extends Component {
         <div className={classes.container}>
           <Paper elevation={1} className={classes.paper} />
           <Formik
-            render={props => <Form {...props} toggleModifyPanel={toggleModifyPanel} />}
+            render={props => (
+              <Form
+                {...props}
+                toggleModifyPanel={toggleModifyPanel}
+                mutation={mutation}
+                setTags={this.setTags}
+                progress={progress}
+              />
+            )}
             validationSchema={validationSchema}
             initialValues={values}
             onSubmit={handleSubmit}
           />
-          <div style={{ marginTop: '10px' }}>
-            <DownshiftMultiple
-              tags={mutation.todo ? mutation.todo.tags : []}
-              onSet={this.setTags}
-            />
-          </div>
         </div>
-        <LinearProgress
-          style={{
-            marginTop: '15px',
-            display: progress ? 'block' : 'none'
-          }}
-        />
       </React.Fragment>
     );
   }

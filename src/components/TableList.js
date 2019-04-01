@@ -25,13 +25,13 @@ function TableList(props) {
         <TableHead>
           <TableRow>
             <TableCell className={classes.cell}>ID</TableCell>
-            <TableCell className={classes.cell}>Status</TableCell>
-            <TableCell className={classes.cell}>Name</TableCell>
-            <TableCell className={classes.cell}>Description</TableCell>
-            <TableCell className={classes.cell}>Due</TableCell>
-            <TableCell className={classes.cell}>Importance</TableCell>
-            <TableCell className={classes.cell}>Tags</TableCell>
-            <TableCell className={classes.cell}>Actions</TableCell>
+            <TableCell className={classes.cell}>Статус</TableCell>
+            <TableCell className={classes.cell}>Название задачи</TableCell>
+            <TableCell className={classes.cell}>Описание задачи</TableCell>
+            <TableCell className={classes.cell}>Дата выполнения</TableCell>
+            <TableCell className={classes.cell}>Важность</TableCell>
+            <TableCell className={classes.cell}>Теги</TableCell>
+            <TableCell className={classes.cell}>Действие</TableCell>
           </TableRow>
         </TableHead>
         <TableListTasks
